@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <title>Task Manager - Debug Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js" defer></script>
+<body>
+    <div class="container">
+        <header>
+            <h1>Task Manager<h1>
+            <p>Add and manage your daily tasks</p>
+        </header>
+
+        <section id="task-form">
+            <h2>Add New Task<h2>
+            <form id="new-task-form">
+                <div class="form-control">
+                    <label for="task-input">Task:</label>
+                    <input type="text" id="task-input" placeholder="Enter your task">
+                </div>
+                <div class="form-control">
+                    <label for="priority-select">Priority:</label>
+                    <select id="priority-select">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    <select>
+                </div>
+                <button type="submit" id="submit-btn">Add Task</button>
+            </form>
+        </section>
+
+        <section id="task-list">
+            <h2>Your Tasks</h2>
+            <div class="filter-controls">
+                <button id="filter-all" class="active-filter">All</span>
+                <button id="filter-high" class="filter-btn">High Priority</button>
+                <button id="filter-medium" class="filter-btn">Medium Priority</button>
+                <button id="filter-low class="filter-btn">Low Priority</button>
+            </div>
+            <ul id="tasks">
+                <li class="task-item priority-high">
+                    <span class="task-text">Complete debugging exercise</span>
+                    <div class="task-actions">
+                        <button class="complete-btn">✓</button>
+                        <button class="delete-btn">×</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <div id="notification-container">
+        <div id="notification-container">
+            <!-- Notification will be injected here -->
+        </div>
+    </div>
+</html>
