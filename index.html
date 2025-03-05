@@ -4,15 +4,16 @@
     <title>Task Manager - Debug Practice</title>
     <link rel="stylesheet" href="style.css">
     <script src="scripts.js" defer></script>
+</head>
 <body>
     <div class="container">
         <header>
-            <h1>Task Manager<h1>
+            <h1>Task Manager</h1>
             <p>Add and manage your daily tasks</p>
         </header>
 
         <section id="task-form">
-            <h2>Add New Task<h2>
+            <h2>Add New Task</h2>
             <form id="new-task-form">
                 <div class="form-control">
                     <label for="task-input">Task:</label>
@@ -21,10 +22,10 @@
                 <div class="form-control">
                     <label for="priority-select">Priority:</label>
                     <select id="priority-select">
-                        <option value="low">Low</option>
+                        <option value="low" selected>Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
-                    <select>
+                    </select>
                 </div>
                 <button type="submit" id="submit-btn">Add Task</button>
             </form>
@@ -33,26 +34,19 @@
         <section id="task-list">
             <h2>Your Tasks</h2>
             <div class="filter-controls">
-                <button id="filter-all" class="active-filter">All</span>
+                <button id="filter-all" class="filter-btn active-filter">All</button>
                 <button id="filter-high" class="filter-btn">High Priority</button>
                 <button id="filter-medium" class="filter-btn">Medium Priority</button>
-                <button id="filter-low class="filter-btn">Low Priority</button>
+                <button id="filter-low" class="filter-btn">Low Priority</button>
             </div>
             <ul id="tasks">
-                <li class="task-item priority-high">
-                    <span class="task-text">Complete debugging exercise</span>
-                    <div class="task-actions">
-                        <button class="complete-btn">✓</button>
-                        <button class="delete-btn">×</button>
-                    </div>
-                </li>
+                <!-- Task items will be injected here -->
             </ul>
         </section>
     </div>
 
     <div id="notification-container">
-        <div id="notification-container">
-            <!-- Notification will be injected here -->
-        </div>
+        <!-- Notification will be injected here -->
     </div>
+</body>
 </html>

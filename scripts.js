@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskForm = document.getElementById('new-task-form');
     const taskInput = document.getElementById('task-input');
     const prioritySelect = document.getElementById('priority-select');
-    const tasksContainer = document.getElementById('task');
+    const tasksContainer = document.getElementById('tasks');
     const filterAll = document.getElementById('filter-all');
     const filterHigh = document.getElementById('filter-high');
     const filterMedium = document.getElementById('filter-medium');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     filterAll.addEventListener('click', () => filterTasks('all'));
     filterHigh.addEventListener('click', () => filterTasks('high'));
     filterMedium.addEventListener('click', () => filterTasks('medium'));
-    filterLow.addEventListener('click', () => filterTask('low'));
+    filterLow.addEventListener('click', () => filterTasks('low'));
     
     // Initialize
     loadTasks();
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let tasks = getTasks();
         tasks.push(task);
-        localStorage.setItem('tasks', JSON.stringify(task));
+        localStorage.setItem('tasks', JSON.stringify(tasks));
         
         createTaskElement(task);
         taskInput.value = '';
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadTasks() {
         let tasks = getTasks();
         
-        tasks.forEach(function(task) {
+        tasks.forEach((task) => {
             createTaskElement(task);
         });
     }
@@ -92,10 +92,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function completeTask(id) {
+        console.log('completeTask', id)
         let tasks = getTasks();
         
         tasks = tasks.map(task => {
-            if (task.id = id) {
+            if (task.id == id) {
                 task.completed = !task.completed;
             }
             return task;
@@ -146,12 +147,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function getTasks() {
         let tasks;
-        if (localStorage.getItem('tasks') === null) {
+        try {
+            tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+            // Check task is array
+            if(!Array.isArray(tasks)){
+                console.error('Retrived tasks are not in array: ', tasks)
+                tasks = []
+            }
+        } catch (e) {
+            console.error('Error parsing tasks from localStorage: ', e);
             tasks = [];
-        } else {
-            tasks = JSON.parse(localStorage.getItem('tasks'));
         }
-        return tasks;
+
+        return tasks
     }
     
     function showNotification(message, type) {
